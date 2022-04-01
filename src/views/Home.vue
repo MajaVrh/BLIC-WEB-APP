@@ -3,8 +3,8 @@
     <div
       class="card"
       v-for="knjiga in knjige"
-      :key="knjiga.isbn"
-      @click="odvediMe(knjiga.isbn)"
+      :key="knjiga.url"
+      @click="odvediMe(knjiga.url)"
     >
       <div>{{ knjiga.name }}</div>
       <div>{{ knjiga.authors }}</div>
@@ -38,11 +38,11 @@ export default {
         "https://www.anapioficeandfire.com/api/books"
       );
       const data = pomocni.data;
-      console.log(data);
+      console.log("evo", data);
       this.knjige = data;
     },
     odvediMe(id) {
-      this.$router.push({ name: "knjiga", parms: { idRoutera: id } });
+      this.$router.push({ name: "knjiga", params: { idRoutera: id } });
     },
   },
 };

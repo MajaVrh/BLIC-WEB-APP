@@ -1,6 +1,13 @@
 <template>
   <div>
-    <div class="knjiga" v-for="k in knjiga" :key="k.isbn"></div>
+    <div class="knjiga" v-for="k of knjiga" :key="k.url">
+      <div>aa{{ k.isbn }}</div>
+      <div>{{ k.numberOfPages }}</div>
+      <div>{{ k.isbn }}</div>
+      <div>{{ k.authors }}</div>
+      <div>{{ k.country }}</div>
+      <!--   <div>{{ k.characters }}</div>-->
+    </div>
   </div>
 </template>
 <script>
@@ -14,7 +21,7 @@ export default {
   },
   methods: {
     async fetchKnjiga() {
-      const id = this.$route.params.id;
+      const id = this.$route.params.idRoutera;
       const pomocni = await axios.get(
         `https://www.anapioficeandfire.com/api/books/${id}`
       );
