@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div id="nav"></div>
+    <img class="pozadina" src="~@/assets/pozadina.jpeg" alt="" />
     <router-view />
   </div>
 </template>
@@ -13,17 +13,12 @@
   text-align: center;
   color: #2c3e50;
 }
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.pozadina {
+  filter: blur(2px);
+  width: 100%;
+  position: fixed;
+  z-index: -5;
+  margin-left: -50%;
+  margin-top: -0.7rem;
 }
 </style>

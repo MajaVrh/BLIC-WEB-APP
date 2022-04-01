@@ -1,14 +1,20 @@
 <template>
-  <div class="parent">
-    <div
-      class="card"
-      v-for="knjiga in knjige"
-      :key="knjiga.url"
-      @click="odvediMe(knjiga.url)"
-    >
-      <div>{{ knjiga.name }}</div>
-      <div>{{ knjiga.authors }}</div>
-      <div>{{ knjiga.released }}</div>
+  <div>
+    <div class="Naslov">Popis knjiga</div>
+    <div class="parent">
+      <div
+        class="card"
+        v-for="knjiga in knjige"
+        :key="knjiga.url"
+        @click="odvediMe(knjiga.url)"
+      >
+        <div class="linija"><b>Naslov: </b> {{ knjiga.name }}</div>
+        <div class="linija"><b>Autor: </b> {{ knjiga.authors[0] }}</div>
+        <div class="linija">
+          <b>Datum izdavanja: </b>
+          {{ new Date(knjiga.released).toDateString() }}
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -51,11 +57,21 @@ export default {
 
 <style scoped>
 .card {
-  background-color: yellow;
-  padding: 3rem;
-  width: 50%;
-  border-radius: 10%;
-  margin: 2rem;
+  background-color: rgba(20, 27, 29, 0.912);
+  padding: 2.3rem;
+  width: 30%;
+  border: 1px solid rgb(203, 113, 23);
+  margin: 1rem;
+  color: white;
+}
+
+.card:hover {
+  background-color: rgba(170, 101, 31, 0.653);
+  padding: 2.3rem;
+  width: 30%;
+  border: 1px solid rgb(203, 113, 23);
+  margin: 1rem;
+  color: white;
 }
 
 .parent {
@@ -63,5 +79,25 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  width: 100%;
+  cursor: pointer;
+  padding-top: 10rem;
+}
+
+.Naslov {
+  font-size: 50px;
+  color: white;
+  margin-top: -1rem;
+  font-family: Gabriola;
+  -webkit-text-stroke-width: 1px;
+  position: fixed;
+  margin-left: -0.5rem;
+  width: 100%;
+  background-color: rgb(20, 27, 29);
+  padding: 1rem;
+}
+
+.linija {
+  margin: 0.5rem;
 }
 </style>

@@ -1,14 +1,22 @@
 <template>
   <div class="parent">
-    <button @click="vratiSe">Home</button>
     <br />
     <div class="knjigaaa">
-      <div>ISBN: {{ knjiga.isbn }}</div>
-      <div>BROJ STRANICA: {{ knjiga.numberOfPages }}</div>
-      <div>IZDAVAČ: {{ knjiga.publisher }}</div>
-      <div>AUTORI: {{ knjiga.authors }}</div>
-      <div>DRŽAVA: {{ knjiga.country }}</div>
-      <!--   <div>{{ k.characters }}</div>-->
+      <div class="naslov">
+        <b>{{ knjiga.name }} </b>
+      </div>
+      <div class="linija"><b>Isbn: </b>{{ knjiga.isbn }}</div>
+      <div class="linija">
+        <b>Broj stranica: </b> {{ knjiga.numberOfPages }}
+      </div>
+      <div class="linija"><b>Izdavač: </b> {{ knjiga.publisher }}</div>
+      <div class="linija"><b>Autori: </b>{{ knjiga.authors[0] }}</div>
+      <div class="linija"><b>Država: </b> {{ knjiga.country }}</div>
+      <div class="linija">
+        <b>Broj znakova: </b>{{ knjiga.characters.length }}
+      </div>
+
+      <button @click="vratiSe">Popis knjiga</button>
     </div>
   </div>
 </template>
@@ -41,19 +49,40 @@ export default {
 </script>
 <style scoped>
 .knjigaaa {
-  background-color: yellow;
-  padding: 3rem;
-  width: 30%;
-  border-radius: 10%;
+  background-color: rgba(20, 27, 29, 0.912);
+  padding: 2.3rem;
+  width: 50%;
+  border: 1px solid rgb(203, 113, 23);
+  margin: 1rem;
+  color: white;
+  margin-top: 8rem;
 }
 .parent {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 button {
   padding: 1rem;
-  border-radius: 10px;
-  margin-right: 5rem;
+  font-size: 18px;
+  margin-top: 1rem;
+  color: white;
+  background-color: rgba(203, 113, 23, 0.707);
+  border: 2px solid rgb(203, 113, 23);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgb(20, 27, 29);
+}
+.linija {
+  margin: 0.5rem;
+}
+
+.naslov {
+  font-size: 20px;
+  margin-bottom: 1rem;
 }
 </style>
