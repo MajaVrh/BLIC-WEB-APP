@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="knjiga" v-for="k of knjiga" :key="k.url">
+    <div class="knjiga" v-for="k in knjiga" :key="k.url">
       <div>aa{{ k.isbn }}</div>
       <div>{{ k.numberOfPages }}</div>
       <div>{{ k.isbn }}</div>
@@ -16,15 +16,18 @@ export default {
   name: "knjiga",
   data() {
     return {
-      knjiga: {},
+      knjiga: [],
     };
+  },
+  async mounted() {
+    await this.fetchKnji();
   },
   methods: {
     async fetchKnjiga() {
       const id = this.$route.params.idRoutera;
-      const pomocni = await axios.get(
-        `https://www.anapioficeandfire.com/api/books/${id}`
-      );
+      axios.get(id);
+
+      console.log(this.id);
       this.knjiga = pomocni.data;
     },
   },
