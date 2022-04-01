@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="parent">
     <div
       class="card"
       v-for="knjiga in knjige"
@@ -42,7 +42,8 @@ export default {
       this.knjige = data;
     },
     odvediMe(id) {
-      this.$router.push({ name: "knjiga", params: { idRoutera: id } });
+      console.log("ID:", id);
+      this.$router.push({ name: "knjiga", params: { id: id } });
     },
   },
 };
@@ -51,6 +52,16 @@ export default {
 <style scoped>
 .card {
   background-color: yellow;
-  margin: 3rem;
+  padding: 3rem;
+  width: 50%;
+  border-radius: 10%;
+  margin: 2rem;
+}
+
+.parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 </style>

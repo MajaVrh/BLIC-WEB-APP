@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-
+import knjiga from "../views/knjiga.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -13,6 +13,7 @@ const routes = [
   {
     path: "/knjiga/:id",
     name: "knjiga",
+    component: knjiga,
   },
 ];
 

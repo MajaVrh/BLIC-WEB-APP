@@ -1,11 +1,13 @@
 <template>
-  <div>
-    <div class="knjiga" v-for="k in knjiga" :key="k.url">
-      <div>aa{{ k.isbn }}</div>
-      <div>{{ k.numberOfPages }}</div>
-      <div>{{ k.isbn }}</div>
-      <div>{{ k.authors }}</div>
-      <div>{{ k.country }}</div>
+  <div class="parent">
+    <button @click="vratiSe">Home</button>
+    <br />
+    <div class="knjigaaa">
+      <div>ISBN: {{ knjiga.isbn }}</div>
+      <div>BROJ STRANICA: {{ knjiga.numberOfPages }}</div>
+      <div>IZDAVAČ: {{ knjiga.publisher }}</div>
+      <div>AUTORI: {{ knjiga.authors }}</div>
+      <div>DRŽAVA: {{ knjiga.country }}</div>
       <!--   <div>{{ k.characters }}</div>-->
     </div>
   </div>
@@ -20,16 +22,38 @@ export default {
     };
   },
   async mounted() {
-    await this.fetchKnji();
+    await this.fetchKnjiga();
   },
   methods: {
     async fetchKnjiga() {
-      const id = this.$route.params.idRoutera;
-      axios.get(id);
+      const id = this.$route.params.id;
+      console.log("ID U RUTERU, id");
+      const pomocni = await axios.get(id);
 
-      console.log(this.id);
+      console.log(id);
       this.knjiga = pomocni.data;
+    },
+    vratiSe() {
+      this.$router.push({ name: "Home" });
     },
   },
 };
 </script>
+<style scoped>
+.knjigaaa {
+  background-color: yellow;
+  padding: 3rem;
+  width: 30%;
+  border-radius: 10%;
+}
+.parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+button {
+  padding: 1rem;
+  border-radius: 10px;
+  margin-right: 5rem;
+}
+</style>
